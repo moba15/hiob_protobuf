@@ -1,9 +1,9 @@
 syntax="proto3";
 service StateUpdate {
     rpc Subscibe(StateSubscribtion) returns(stream StatesValueUpdate);
-    rpc updateValue(StateValueUpdateRequest) returns(StateValueUpdateResponse);
-    rpc searchState(SearchState) returns(SearchStateResponse);
-    rpc searchStateStream(stream SearchState) returns(stream SearchStateResponse);
+    rpc UpdateValue(StateValueUpdateRequest) returns(StateValueUpdateResponse);
+    rpc SearchState(SearchState) returns(SearchStateResponse);
+    rpc SearchStateStream(stream SearchState) returns(stream SearchStateResponse);
     rpc GetAllObjects(AllObjectRequest) returns(AllObjectsResults);
 }
 
