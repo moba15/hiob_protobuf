@@ -4,6 +4,18 @@ service StateUpdate {
     rpc updateValue(StateValueUpdateRequest) returns(StateValueUpdateResponse);
     rpc searchState(SearchState) returns(SearchStateResponse);
     rpc searchStateStream(stream SearchState) returns(stream SearchStateResponse);
+    rpc GetAllObjects(AllObjectRequest) returns(AllObjectsResults);
+}
+
+
+
+message AllObjectsResults {
+    repeated State states = 1;
+
+}
+
+message AllObjectRequest {
+
 }
 
 message StatesValueUpdate {
