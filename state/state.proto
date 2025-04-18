@@ -78,16 +78,10 @@ message State {
         string other = 99;
     }
     message StateCommon {
-        enum StateType {
-            boolean = 0;
-            str = 1;
-            number = 2;
-
-        }
-       
+        
         string name = 1;
         string desc = 2;
-        StateType type = 3;
+        string type = 3;
         bool read = 4;
         bool write = 5;
         string role = 6;
