@@ -1,0 +1,63 @@
+syntax="proto3";
+
+import "google/protobuf/struct.proto";
+
+service ConfigSync {
+    rpc GetAvailableConfigs(AvailableConfigsRequest) returns (AvailableConfigsResponse);
+    rpc ConfigSyncUp(ConfigSyncUpRequest) returns (ConfigSyncUpResponse);
+    rpc ConfigSyncDown(ConfigSyncDownRequest) returns (Config);
+    rpc ConfigCreateDelete(ConfigCreateDeleteRequest) returns (ConfigCreateDeleteResponse);
+
+
+}
+
+enum SyncType {
+        SYNC_ALL = 0;
+        SYNC_SCREENS = 1;
+        SYNC_TEMPLATES = 2;
+};
+
+
+message AvailableConfigsRequest {
+      string userId = 1;
+}
+
+
+message AvailableConfigsResponse {
+    repeated string configNames = 1;
+
+}
+
+message ConfigSyncUpRequest {
+    string userId = 1;
+    Config config = 3;
+}
+
+message ConfigSyncUpResponse {
+    string userId = 1;
+    bool success = 2; // true if sync was successful, false otherwise
+}
+
+message ConfigSyncDownRequest {
+    string userId = 1;
+    string configName = 2;
+    SyncType syncType = 3;
+}
+
+message ConfigCreateDeleteRequest {
+    string userId = 1;
+    string configName = 2;
+    bool delete = 3; // true for delete, false for create
+}
+
+message ConfigCreateDeleteResponse {
+    string userId = 1;
+    repeated string configNames = 2; // list of available configs after create/delete
+    bool success = 3; // true if create/delete was successful, false otherwise
+}
+
+message Config {
+    string name = 1;
+    google.protobuf.Struct screens = 2;
+    google.protobuf.Struct templates = 3;
+}
