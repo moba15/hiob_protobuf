@@ -58,6 +58,6 @@ message ConfigCreateDeleteResponse {
 
 message Config {
     string name = 1;
-    google.protobuf.Struct screens = 2;
-    google.protobuf.Struct templates = 3;
+    optional string screens = 2;
+    optional string templates = 3;
 }
