@@ -15,7 +15,7 @@ message AllObjectsResults {
 }
 
 message AllObjectRequest {
-
+    repeated string filterPatterns = 1;
 }
 
 message StatesValueUpdate {
